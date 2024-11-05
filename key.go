@@ -13,13 +13,17 @@ import (
 	"fmt"
 )
 
+var (
+	Nil *interface{}
+)
+
 type PrivateKey interface {
 	Public() crypto.PublicKey
-	Equal(crypto.PrivateKey) bool
+	//Equal(crypto.PrivateKey) bool
 }
 
 type PublicKey interface {
-	Equal(crypto.PublicKey) bool
+	//Equal(crypto.PublicKey) bool
 }
 
 type PrivateKeyDecoder []byte
@@ -74,11 +78,11 @@ func (p PKCS1PrivateKey) RSAPrivateKey() (*rsa.PrivateKey, error) {
 }
 
 type PKCS8PrivateKey struct {
-	key any
+	key interface{}
 	err error
 }
 
-func (p PKCS8PrivateKey) PrivateKey() (any, error) {
+func (p PKCS8PrivateKey) PrivateKey() (interface{}, error) {
 	return p.key, p.err
 }
 
@@ -148,7 +152,7 @@ func (p PublicKeyDecoder) PKCS1() PKCS1PublicKey {
 func (p PublicKeyDecoder) PKIX() PKIXPublicKey {
 	der, err := p.decode()
 	if err != nil {
-		return PKIXPublicKey{key: nil, err: err}
+		return PKIXPublicKey{key: Nil, err: err}
 	}
 	key, err := x509.ParsePKIXPublicKey(der)
 	return PKIXPublicKey{key: key, err: err}
@@ -164,11 +168,11 @@ func (p PKCS1PublicKey) RSAPublicKey() (*rsa.PublicKey, error) {
 }
 
 type PKIXPublicKey struct {
-	key any
+	key interface{}
 	err error
 }
 
-func (p PKIXPublicKey) PublicKey() (any, error) {
+func (p PKIXPublicKey) PublicKey() (interface{}, error) {
 	return p.key, p.err
 }
 
