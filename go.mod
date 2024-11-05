@@ -1,3 +1,3 @@
-module github.com/smartwalle/ncrypto
+module github.com/A-little-imagination/ncrypto
 
-go 1.18
+go 1.13

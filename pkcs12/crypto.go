@@ -12,7 +12,7 @@ import (
 	"encoding/asn1"
 	"errors"
 
-	"github.com/smartwalle/ncrypto/pkcs12/internal/rc2"
+	"github.com/A-little-imagination/ncrypto/pkcs12/internal/rc2"
 )
 
 var (

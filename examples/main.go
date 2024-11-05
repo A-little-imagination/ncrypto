@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/smartwalle/ncrypto/pkcs12"
+	"github.com/A-little-imagination/ncrypto/pkcs12"
 	"os"
 )
 
